@@ -1,7 +1,10 @@
 package eu.telecom_bretagne.CESI.data.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -15,7 +18,7 @@ public class Service implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="SERVICE_ID_GENERATOR", sequenceName="SERVICE_ID_SEQ")
+	@SequenceGenerator(name="SERVICE_ID_GENERATOR", sequenceName="SERVICE_ID_SEQ", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SERVICE_ID_GENERATOR")
 	private Integer id;
 
@@ -38,6 +41,8 @@ public class Service implements Serializable {
 	private Set<Service> services;
 
 	public Service() {
+		employes = new HashSet<Employe> ();
+		services = new HashSet<Service> ();
 	}
 
 	public Integer getId() {
