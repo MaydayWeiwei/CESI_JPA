@@ -29,7 +29,7 @@ public class Service implements Serializable {
 
 	//bi-directional many-to-one association to Employe
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="service")
-	private Set<Employe> employes = new HashSet<Employe>();
+	private Set<Employe> employes = new HashSet<Employe> ();
 
 	//bi-directional many-to-one association to Service
 	@ManyToOne
@@ -37,8 +37,8 @@ public class Service implements Serializable {
 	private Service service;
 
 	//bi-directional many-to-one association to Service
-	@OneToMany(mappedBy="service")
-	private Set<Service> services = new HashSet<Service>();
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="service")
+	private Set<Service> services = new HashSet<Service> ();
 
 	public Service() {
 	}

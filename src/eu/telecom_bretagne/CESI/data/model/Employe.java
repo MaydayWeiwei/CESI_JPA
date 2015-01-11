@@ -2,6 +2,7 @@ package eu.telecom_bretagne.CESI.data.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 
 
 /**
@@ -18,9 +19,19 @@ public class Employe implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMPLOYE_ID_GENERATOR")
 	private Integer id;
 
+	@Temporal(TemporalType.DATE)
+	@Column(name="date_debut")
+	private Date dateDebut;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="date_fin")
+	private Date dateFin;
+
 	private String nom;
 
 	private String prenom;
+
+	private String statut;
 
 	//bi-directional many-to-one association to Service
 	@ManyToOne
@@ -38,6 +49,22 @@ public class Employe implements Serializable {
 		this.id = id;
 	}
 
+	public Date getDateDebut() {
+		return this.dateDebut;
+	}
+
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
+	public Date getDateFin() {
+		return this.dateFin;
+	}
+
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
+	}
+
 	public String getNom() {
 		return this.nom;
 	}
@@ -52,6 +79,14 @@ public class Employe implements Serializable {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
+	}
+
+	public String getStatut() {
+		return this.statut;
+	}
+
+	public void setStatut(String statut) {
+		this.statut = statut;
 	}
 
 	public Service getService() {
